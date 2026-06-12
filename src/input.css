@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@custom-variant widescreen (@media (min-aspect-ratio: 3/2));
+@custom-variant tallscreen (@media (max-aspect-ratio: 13/20));
+
+@theme {
+    --animate-open-menu: open-menu 0.5s ease-in-out forwards;
+
+    --color-papayawhip-light: #fef434;
+    --color-papayawhip: #ffefd5;
+    --color-papayawhip-dark: #fee5bc;
+
+    @keyframes open-menu {
+        0% {
+            transform: scaleY(0);
+        }
+        80% {
+            transform: scaleY(1.2);
+        }
+        100% {
+            transform: scaleY(1);
+        }
+    }
+}
+
+@utility section-min-height {
+    min-height: calc(100vh - 68px);
+}
+
+@utility toggle-btn {
+    @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:bg-transparent [&>div]:rotate-[180deg]
+}
+
+/* Custom class */
+.radial-blue {
+    background: radial-gradient(lightyellow, skyblue);
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+    border-top: 4px solid white;
+    height: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    position: absolute;
+    top: 0;
+    content: '';
+    width: 100%;
+    border-radius: inherit;
+}
+
+.hamburger-icon::before {
+    transform: translate(-50%, 2px);
+}
+
+.hamburger-icon::after {
+    transform: translate(-50%, 26px);
+}
+
+.hamburger-icon.close {
+    border: none;
+}
+
+.hamburger-icon.close::before {
+    transform: translate(-50%, 14px) rotate(-45deg);
+}
+
+.hamburger-icon.close::after {
+    transform: translate(-50%, 14px) rotate(45deg);
+}
